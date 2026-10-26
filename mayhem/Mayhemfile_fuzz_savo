@@ -1,0 +1,10 @@
+project: savantenvs/savo
+target: fuzz_savo
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/fuzz_savo/testsuite
+cmds:
+  - cmd: /mayhem/fuzz_savo
+    libfuzzer: true
+    dictionary: /mayhem/mayhem/fuzz_savo/fuzz_savo.dict
+    timeout: 5

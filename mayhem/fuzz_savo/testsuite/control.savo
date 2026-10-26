@@ -1,0 +1,18 @@
+# if / else / while with real bodies
+savovar @x = 7
+savoif (@x > 5)
+    savoprint "big\n"
+savoend
+savoif (@x > 100)
+    savoprint "huge\n"
+savoelse
+    savoprint "small\n"
+savoend
+savowhile (@x > 4)
+    savoprint "tick\n"
+    savovar @x = @x - 1
+savoend
+# legacy repeat forms still work
+savofor 3 "x"
+savofor (0, 3, 1) "n: " + 0
+savowhile 2 "w"

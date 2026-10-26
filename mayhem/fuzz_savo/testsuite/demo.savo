@@ -1,0 +1,72 @@
+savoprint "=== SAVO 3.4 — FEATURE TOUR ===\n\n"
+
+savoprint "1. Variables and expressions:\n"
+savovar @x 42
+savovar @y 8
+savovar @sum = @x + @y
+savoprint "sum = " + @sum + "\n"
+savoprint "(x + y) * 2 - 10 = " + ((@x + @y) * 2 - 10) + "\n"
+
+savoprint "2. Strings and concatenation:\n"
+savovar @name = "Savo"
+savoprint "Hello, " + @name + "! (" + savolen(@name) + " chars)\n"
+savoprint "upper: " + savoupper(@name) + ", lower: " + savolower("LANG") + "\n"
+
+savoprint "3. Math functions:\n"
+savosqrt 144
+savopow 2 10
+savovar @hyp = savosqrt(3 * 3 + 4 * 4)
+savoprint "hypotenuse of (3,4) = " + @hyp + "\n"
+
+savoprint "4. Conditionals with real bodies:\n"
+savoif (@x > @y)
+    savoprint "x is greater than y\n"
+savoelse
+    savoprint "x is not greater than y\n"
+savoend
+
+savoprint "5. While loop — factorial of 5:\n"
+savovar @n = 5
+savovar @f = 1
+savowhile (@n > 1)
+    savovar @f = @f * @n
+    savovar @n = @n - 1
+savoend
+savoprint "5! = " + @f + "\n"
+
+savoprint "6. User-defined functions (with recursion):\n"
+savodef square(@n)
+    savoreturn @n * @n
+savoend
+savodef fib(@n)
+    savoif (@n < 2)
+        savoreturn @n
+    savoend
+    savoreturn fib(@n - 1) + fib(@n - 2)
+savoend
+savoprint "square(9) = " + square(9) + "\n"
+savoprint "fib(10) = " + fib(10) + "\n"
+
+savoprint "7. Arrays (mutable, shared by reference):\n"
+savovar @nums = [3, 1, 4, 1, 5]
+savopush @nums 9
+savoprint "nums = "
+savoprint @nums
+savovar @i = 0
+savovar @sum = 0
+savowhile (@i < savolen(@nums))
+    savovar @sum = @sum + @nums[@i]
+    savovar @i = @i + 1
+savoend
+savoprint "sum of nums = " + @sum + "\n"
+savovar @matrix = [[1, 2], [3, 4]]
+savoprint "matrix[1][0] = " + @matrix[1][0] + "\n"
+
+savoprint "8. Objects (string-keyed maps):\n"
+savovar @user = {name: "Ada", age: 36}
+savoset @user.age = 37
+savoprint "name = " + @user.name + ", age = " + @user.age + "\n"
+savovar @point = {x: 3, y: 4}
+savoprint "distance = " + savosqrt(@point.x * @point.x + @point.y * @point.y) + "\n"
+
+savoprint "\n=== END OF TOUR ===\n"
